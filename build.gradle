@@ -63,14 +63,8 @@ dependencies {
 	compile('com.typesafe.akka:akka-cluster_2.11:2.4.17')
 	compile('com.typesafe.akka:akka-contrib_2.11:2.4.17')
 	
-	
-	// for OCD 5.3.1 due to lambda use in CorporateMapping system
-	// http://qkyrie.silvrback.com/spring-thymeleaf-and-java-8
-    // https://mvnrepository.com/artifact/org.javassist/javassist
     compile group: 'org.javassist', name: 'javassist', version: '3.18.2-GA'
 
-
-	
 	// slack
 	compile(group: 'com.github.flowctrl', name: 'slack-api', version: 'v1.1.0.RELEASE')
 
