@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- Below from spring-boot defaults.xml -->
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+
+	<!-- FACTORY ORIGINALS -->
+	<property name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex"/>
+	<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%t] %-40.40logger{39} : %m%n%wex"/>
+ 
+ 
+	<appender name="DEBUG_LEVEL_REMAPPER" class="org.springframework.boot.logging.logback.LevelRemappingAppender">
+		<destinationLogger>org.springframework.boot</destinationLogger>
+	</appender>
+
+	<logger name="org" level="WARN"/>
+	<logger name="com" level="WARN"/>
+	<logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR"/>
+	<logger name="org.apache.catalina.util.LifecycleBase" level="ERROR"/>
+	<logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN"/>
+	<logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN"/>
+	<logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN"/>
+	<logger name="org.crsh.plugin" level="WARN"/>
+	<logger name="org.crsh.ssh" level="WARN"/>
+	<logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR"/>
+	<logger name="org.hibernate.validator.internal.util.Version" level="WARN"/>
+	<logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="WARN"/>
+
+	<logger name="org.springframework" level="DEBUG"/>
+	
+	<logger name="ch.qos.logback.core" level="DEBUG"/>
+	
+	<logger name="org.springframework.boot.actuate.endpoint.jmx" additivity="false">
+		<appender-ref ref="DEBUG_LEVEL_REMAPPER"/>
+	</logger>
+	<logger name="org.thymeleaf" additivity="false">
+		<appender-ref ref="DEBUG_LEVEL_REMAPPER"/>
+	</logger>
+	
+	<!-- 
+	<logger name="org.apache.camel" level="TRACE"/>
+	<logger name="com.amazonaws" level="TRACE"/>
+	<logger name="org.apache.camel.component.seda.SedaConsumer" level="INFO"/>
+	 -->
+	 
+	 
+	<!-- Below copied from spring-boot base.xml -->
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder> 
+          <Pattern>${FILE_LOG_PATTERN}</Pattern>
+        </encoder> 
+        <file>${logging.file}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.file}.%d{yyyy-MM-dd_HH}</fileNamePattern>
+            <maxHistory>192</maxHistory>
+        </rollingPolicy>
+    </appender>
+	
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+	
+</configuration>
