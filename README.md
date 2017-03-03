@@ -6,7 +6,7 @@ https://gitter.im/spring-projects/spring-security-oauth?at=58b5c68800c00c3d4f9e9
 
 Issue:
 
-POSTs to `http://localhost:8080/oauth/token' (basic auth: testuser/123) never are authenticated w/ `MyAuthenticationManagerAndProvider`. The `MyClientDetailsService` is invoked however, but the actual auth for whatever reason always hits the `DoaAuthenticationProvider`
+POSTs to `http://localhost:8080/oauth/token` (basic auth: testuser/123) never are authenticated w/ `MyAuthenticationManagerAndProvider`. The `MyClientDetailsService` is invoked however, but the actual auth for whatever reason always hits the `DoaAuthenticationProvider`
 
 This is a slimmed down sample of a much larger app that worked fine w/ this kind of configuration under spring-boot 1.2.5.
 
