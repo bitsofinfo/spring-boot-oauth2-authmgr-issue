@@ -1,5 +1,6 @@
 # spring-boot-oauth2-authmgr-issue
 
+https://gitter.im/spring-projects/spring-security-oauth?at=58b5c68800c00c3d4f9e91d3
 
 `./gradlew bootRun`
 
